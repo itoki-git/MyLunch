@@ -10,15 +10,15 @@ services:
     ports:
       - 8080:8080
 
-  frontend:
+  flutter:
     build:
       context: .
-      dockerfile: ./docker/frontend/Dockerfile
-    ports:
-      - 3000:3000
+      dockerfile: ./docker/flutter/Dockerfile
     volumes:
       - ./frontend:/frontend/src/app
-    tty: true
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    env_file:
+      - flutter/.flutter.env
     #command: sh -c "yarn dev"
   webServer:
     image: nginx

@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"itoki-git/MyLunch/server"
 )
 
 func main() {
-	router := gin.Default()
-	router.POST("/queru")
+	server.Init()
 }
