@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'search_page.dart';
 import 'card_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         home: Scaffold(
           body: SafeArea(
-            child: CardPage(),
+            child: SearchPage(), //CardPage(),
           ),
         ));
   }
