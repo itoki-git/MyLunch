@@ -32,6 +32,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: materialWhite,
         ),
         darkTheme: ThemeData.dark(),
+        routes: {
+          '/lunch': (context) => CardPage(),
+        },
         home: Scaffold(
           body: SafeArea(
             child: SearchPage(), //CardPage(),

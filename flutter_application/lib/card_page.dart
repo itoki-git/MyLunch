@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: Cards(),
+        ),
+      ),
+    );
+  }
+}
+
+class Cards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -9,13 +21,7 @@ class CardPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildTitleSection(
-                title: "Payment Details",
-                subTitle: "How would you like to pay ?"),
-            _buildAddCardButton(
-              icon: Icon(Icons.search),
-              color: Color(0xFF081603),
-            ),
+            _buildTitleSection(title: "Paaaayment Details", subTitle: ""),
             GestureDetector(
                 onTap: () {
                   print("ss");

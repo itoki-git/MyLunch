@@ -22,6 +22,7 @@ class SearchPage extends StatelessWidget {
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
                   hintText: '食べたいもの、メニューなど',
+                  hintStyle: TextStyle(color: Colors.black26),
                   filled: true,
                   fillColor: Colors.grey.shade200,
                   border: OutlineInputBorder(
@@ -108,7 +109,7 @@ class SearchPage extends StatelessWidget {
                       });
                 },
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.white),
+                  decoration: BoxDecoration(color: Colors.black12),
                   child: Row(
                     children: <Widget>[
                       _buildIconButtonCulumn(Icons.money, "予算"),
@@ -133,15 +134,14 @@ class SearchPage extends StatelessWidget {
                 child: const Text(
                   '検索',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.white),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
-                    onPrimary: Colors.white,
-                    minimumSize: Size(300, 50)),
+                    primary: Colors.orange, minimumSize: Size(300, 50)),
                 onPressed: () {
+                  Navigator.pushNamed(context, '/lunch');
                   print("search!!");
                 },
               ),
