@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SearchPage extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: SafeArea(child: Search()),
+      ),
+    );
+  }
+}
+
+class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,13 +21,6 @@ class SearchPage extends StatelessWidget {
           child: Form(
               child: Column(
             children: <Widget>[
-              Text(
-                '検索',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 30,
-              ),
               TextField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
@@ -177,7 +180,10 @@ class SearchPage extends StatelessWidget {
       child: TextButton(
         child: Text(
           text,
-          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: fontSize,
+              color: Colors.black,
+              fontWeight: FontWeight.bold),
         ),
         onPressed: () {
           onPressed();
