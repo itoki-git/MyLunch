@@ -2,17 +2,33 @@ import 'package:flutter/material.dart';
 
 class CardPage extends StatelessWidget {
   Widget build(BuildContext context) {
+    final MaterialColor materialWhite = const MaterialColor(
+      0xFFFFFFFF,
+      const <int, Color>{
+        50: const Color(0xFFFFFFFF),
+        100: const Color(0xFFFFFFFF),
+        200: const Color(0xFFFFFFFF),
+        300: const Color(0xFFFFFFFF),
+        400: const Color(0xFFFFFFFF),
+        500: const Color(0xFFFFFFFF),
+        600: const Color(0xFFFFFFFF),
+        700: const Color(0xFFFFFFFF),
+        800: const Color(0xFFFFFFFF),
+        900: const Color(0xFFFFFFFF),
+      },
+    );
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: materialWhite,
+      ),
       home: Scaffold(
-        body: SafeArea(
-          child: Cards(),
-        ),
+        body: SafeArea(child: CardComponent()),
       ),
     );
   }
 }
 
-class Cards extends StatelessWidget {
+class CardComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -21,7 +37,6 @@ class Cards extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildTitleSection(title: "Paaaayment Details", subTitle: ""),
             GestureDetector(
                 onTap: () {
                   print("ss");
@@ -48,6 +63,19 @@ class Cards extends StatelessWidget {
               height: 15,
             ),
             GestureDetector(
+              onTap: () {
+                print("ss");
+              },
+              child: _buildCreditCard(
+                  color: Color(0xFF13F370),
+                  cardExpiration: "08/2022",
+                  cardHolder: "HOUSSEM SELMI",
+                  cardNumber: "3333 7532 XXXX 9742"),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            GestureDetector(
                 onTap: () {
                   print("ss");
                 },
@@ -62,29 +90,17 @@ class Cards extends StatelessWidget {
     );
   }
 
+/*
   // Build the title section
   Column _buildTitleSection({@required title, @required subTitle}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, top: 16.0),
-          child: Text(
-            '$title',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, bottom: 16.0),
-          child: Text(
-            '$subTitle',
-            style: TextStyle(fontSize: 21, color: Colors.black45),
-          ),
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.arrow_back),
+        title: Text('検索結果'),
+      ),
     );
   }
-
+*/
   // Build the credit card widget
   Card _buildCreditCard(
       {required Color color,
