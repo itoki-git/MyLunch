@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'search_page.dart';
 import 'card_page.dart';
+import 'header.dart';
+import 'footer.dart';
+import 'pager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,64 +30,70 @@ class MyApp extends StatelessWidget {
       },
     );
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: materialWhite,
-        ),
-        darkTheme: ThemeData.dark(),
-        routes: {
-          '/lunch': (context) => CardPage(),
-        },
-        home: Scaffold(
-          body: SafeArea(
-            child: SearchPage(), //CardPage(),
-          ),
-        ));
+      theme: ThemeData(
+        primarySwatch: materialWhite,
+      ),
+      darkTheme: ThemeData.dark(),
+      home: new Home(),
+    );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class Home extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StatefulWidget> createState() {
+    return new HomeState();
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class HomeState extends State<Home> {
+  int currentIndex = 0;
+  final List<Widget> tabs = [
+    TabPagerItem(),
+    SearchPage(),
+    CardPage(),
+    TabPagerItem(),
+  ];
 
-  void _incrementCounter() {
+  static const titleNames = ['ホーム', '検索', 'MAP', '履歴'];
+
+  void onTabTapped(int index) {
     setState(() {
-      _counter++;
+      currentIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: Text(titleNames[currentIndex]),
+        elevation: 0,
+        backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: tabs[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: onTabTapped,
+        currentIndex: currentIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'ホーム',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: '検索',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'マップ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: '履歴',
+          ),
+        ],
       ),
     );
   }
